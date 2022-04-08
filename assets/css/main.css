@@ -580,6 +580,37 @@ Wrapped in a media query to make sure this only happens on large viewports / des
     min-width: 100%;
 }
 
+.post-full-content h1 a,
+.post-full-content h2 a,
+.post-full-content h3 a,
+.post-full-content h4 a,
+.post-full-content h5 a,
+.post-full-content h6 a {
+    opacity: 0.5;
+    decoration: none;
+    box-shadow: none;
+}
+
+.post-full-content h1 a:hover,
+.post-full-content h2 a:hover,
+.post-full-content h3 a:hover,
+.post-full-content h4 a:hover,
+.post-full-content h5 a:hover,
+.post-full-content h6 a:hover {
+    opacity: 1;
+    decoration: none;
+    box-shadow: none;
+}
+
+.post-full-content h1 a .inline-svg,
+.post-full-content h2 a .inline-svg,
+.post-full-content h3 a .inline-svg,
+.post-full-content h4 a .inline-svg,
+.post-full-content h5 a .inline-svg,
+.post-full-content h6 a .inline-svg{
+    bottom: 0;
+}
+
 .post-full-content li {
     word-break: break-word;
 }

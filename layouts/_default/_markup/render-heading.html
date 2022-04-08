@@ -1,0 +1,3 @@
+<h{{ .Level }} id="{{ .Anchor | safeURL }}">{{ .Text | safeHTML }} <a href="#{{ .Anchor | safeURL }}">
+  {{ partial "font-awesome.html" (dict "iconName" "link" "custom" false) }}
+</a></h{{ .Level }}>
