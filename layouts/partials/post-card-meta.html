@@ -1,0 +1,12 @@
+{{ if isset .Params "date" }}
+<time class="post-card-meta-date" datetime="{{.Date.Format "2006-31-01"}}">{{ .Date | time.Format ":date_long" }}</time>
+<span class="bull">&bull;</span>
+{{ end }}
+<span class="post-card-meta-reading-time">{{ .ReadingTime }} {{ i18n "min" }}</span>
+{{ if .Params.tags }}
+<ul class="post-card-tags">
+  {{ range .Params.tags }}
+  <li><a href="{{ "tags/" | absLangURL }}{{ . | urlize }}">#{{ . }}</a></li>
+  {{ end }}
+</ul>
+{{ end }}

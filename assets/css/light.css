@@ -1,0 +1,24 @@
+:root {
+ /* light.css */
+  --font-color: #35373A;
+  --bg-color: #f4f8fb;
+  --bg-post: white;
+
+  --header-gradient-color-one: #ff0000; /* #e85f0e */
+  --header-gradient-color-two: #e85f0e; /* #ff2c80; */
+  --header-gradient-color-three: #c55de7; /* #c55de7; */
+  --header-gradient-color-four: #008eff;
+
+  --link-color:#1d60a3;
+  --link-state-color:#a31d1d;
+
+  --pre-color: #333;
+  --pre-bg-color: #f1f1f1;
+
+  --img-bg-color: #dfe4e8;
+
+  --thead-bg-color: #f4f8fb;
+  --table-border-color: #e3ecf3;
+  --tabel-bg-shadow: #fff;
+  --tabel-bg-shadow-rgb: 255, 255, 255;
+}

@@ -1,0 +1,19 @@
+<nav class="site-nav">
+  <div class="site-nav-left">
+    <ul class="nav">
+      {{ range $.Site.Menus.main }}
+      <li><a href="{{ .URL }}">{{- i18n .Identifier . | default .Name -}}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+  <div class="site-nav-logo">
+    {{ $logo := "" }}
+    {{ if isset .Site.Params "logo" }}{{ $logo = .Site.Params.logo | absURL}}{{ end }}
+    <a href="{{ .Site.BaseURL }}">
+      <img src="{{$logo}}" alt="{{.Site.Title}}" />
+    </a>
+  </div>
+  <div class="site-nav-right">
+    {{ partial "social" . }}
+  </div>
+</nav>

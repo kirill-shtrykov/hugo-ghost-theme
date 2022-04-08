@@ -1,0 +1,24 @@
+[data-theme='dark'] {
+ /* dark.css */
+  --font-color: #c8c8c8;
+  --bg-color: #282828;
+  --bg-post: #3c3f41;
+
+  --header-gradient-color-one: #990000;
+  --header-gradient-color-two: #772200;
+  --header-gradient-color-three: #330033;
+  --header-gradient-color-four: #000033;
+
+  --link-color: #3eb0ef;
+  --link-state-color: #cd2323;
+
+  --pre-color: #f8f8f2;
+  --pre-bg-color: #272822;
+
+  --img-bg-color: #323232;
+
+  --thead-bg-color: #2b2f36;
+  --table-border-color: #2b2f36;
+  --tabel-bg-shadow: #3c3f41;
+  --tabel-bg-shadow-rgb: 60, 63, 65;
+}

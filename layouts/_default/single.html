@@ -1,0 +1,32 @@
+{{ define "body-tag" }}<body class="post-template">{{ end }}
+{{ define "header" }}
+<header class="site-header outer">
+  <div class="inner">
+    {{ partial "site-nav" . }}
+  </div>
+</header>
+{{ end }}
+{{ define "main" }}
+<main id="site-main" class="site-main outer">
+  <div class="inner">
+    <article class="post-full{{ if not (isset .Params "feature_image") }} no-image{{ end }}">
+      <header class="post-full-header">
+        <h1 class="post-full-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">
+          {{trim .Title  " " }}
+        </h1>
+        <div class="post-full-meta">
+          {{ partial "post-card-meta" . }}
+        </div>
+      </header>
+      {{ if isset .Params "feature_image" }}
+      {{ $image := resources.Get .Params.feature_image }}
+      <figure class="post-full-image" style="background-image: url({{ $image.RelPermalink }})"></figure>
+      {{ end }}
+      <section class="post-full-content">
+        {{ .Content }}
+      </section>
+    </article>
+    {{- partial "post-navigation.html" . -}}
+  </div>
+</main>
+{{ end }}

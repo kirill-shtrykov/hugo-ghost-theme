@@ -1,0 +1,44 @@
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="HandheldFriendly" content="True">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="no-referrer-when-downgrade">
+{{ $title := print .Title " · " .Site.Title }}
+{{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+<title>{{ $title }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end -}}">
+
+{{ with .Keywords }}
+<meta name="keywords" content="{{ range $i, $e := . }}{{ if $i }},{{ end }}{{ $e }}{{ end }}">
+{{ end }}
+
+{{ if eq .Site.Params.favicon.enabled true }}
+<!-- 32×32 -->
+<link rel="icon" href="{{ .Site.Params.favicon.file | default "favicon.ico"  | absURL }}" sizes="any">
+{{ end }}
+{{ if eq .Site.Params.svgicon.enabled true }}
+<link rel="icon" href="{{ .Site.Params.svgicon.file | default "icon.svg" | absURL }}" type="image/svg+xml">
+{{ end }}
+{{ if eq .Site.Params.appleicon.enabled true }}
+<!-- 180×180 -->
+<link rel="apple-touch-icon" href="{{ .Site.Params.appleicon.file | default "apple-touch-icon.png" | absURL }}">
+{{ end }}
+{{ if eq .Site.Params.webmanifest.enabled true }}
+<link rel="manifest" href="{{ .Site.Params.webmanifest.file | default "manifest.webmanifest"  | absURL }}">
+{{ end }}
+
+
+{{ if and (.IsPage) (eq .Params.hidden true)}}
+<meta name="robots" content="noindex" />
+{{ end }}
+
+{{ with .OutputFormats.Get "rss" -}}
+{{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+{{ end -}}
+
+{{ partial "resource.html" (dict "context" . "type" "css" "filename" "css/main.css") }}
+{{ partial "resource.html" (dict "context" . "type" "js" "filename" "js/theme.js") }}
+
+{{ template "_internal/opengraph.html" . }}
+{{ template "_internal/twitter_cards.html" . }}
+{{ template "_internal/google_analytics.html" . }}

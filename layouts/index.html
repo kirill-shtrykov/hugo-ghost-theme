@@ -1,0 +1,11 @@
+{{ define "body-tag" }}<body class="home-template">{{ end }}
+{{ define "main" }}
+<main id="site-main" class="site-main outer">
+  <div class="inner">
+    <div class="post-feed">
+      {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+      {{ range $pages.ByLastmod.Reverse }}{{ partial "post-card" . }}{{ end }}
+    </div>
+  </div>
+</main>
+{{ end }}

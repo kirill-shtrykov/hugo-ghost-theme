@@ -1,0 +1,981 @@
+/* Table of Contents
+/* ------------------------------------------------------------
+
+This is a development CSS file which is built to a minified
+production stylesheet in assets/built/screen.css
+
+1. Global Styles
+2. Layout - Page building blocks
+3. Home Template Styles
+4. Site Header
+5. Site Navigation
+6. Post Feed
+7. Single Post
+8. Site Footer
+
+*/
+
+
+/* 1. Global - Set up the things
+/* ---------------------------------------------------------- */
+{{ $default := resources.Get "css/default.css" }}
+{{ $light := resources.Get "css/light.css" }}
+{{ $dark := resources.Get "css/dark.css" }}
+{{ $default.Content }}
+{{ $light.Content }}
+{{ $dark.Content }}
+
+:root {
+  /* Fonts */
+  --font-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  --font-serif: Georgia, Times, serif;
+  --font-mono: Menlo, Courier, monospace;
+}
+
+body {
+    color: var(--font-color);
+    background: var(--bg-color);
+}
+
+a {
+  color: var(--font-color);
+}
+
+.img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 100%;
+}
+
+/* 2. Layout - Page building blocks
+/* ---------------------------------------------------------- */
+
+.viewport {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-main {
+  flex-grow: 1;
+}
+
+/* Full width page blocks */
+.outer {
+  position: relative;
+  padding: 0 4vmin;
+}
+
+/* Centered content container blocks */
+.inner {
+  margin: 0 auto;
+  max-width: 1040px;
+  width: 100%;
+}
+
+/* Usage:
+
+<div class="outer">
+    <div class="inner">
+        Centered content
+    </div>
+</div>
+
+*/
+
+/* 3. Home Template Styles
+/* ---------------------------------------------------------- */
+
+@media (min-width: 900px) {
+    .home-template .post-feed {
+        margin-top: -70px;
+        padding-top: 0;
+    }
+    .home-template .site-nav {
+        position: relative;
+        top: -70px;
+    }
+}
+
+.home-template .site-nav-logo {
+  display: none;
+}
+
+/* 4. Site Header
+/* ---------------------------------------------------------- */
+
+.site-header {
+  position: relative;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: white;
+  background: linear-gradient(
+    -45deg,
+    var(--header-gradient-color-one),
+    var(--header-gradient-color-two),
+    var(--header-gradient-color-three),
+    var(--header-gradient-color-four)
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.site-header-content {
+  padding: 18vmin 4vmin;
+  font-size: 2.5rem;
+  font-weight: 400;
+	position: relative;
+	z-index: 100;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 6vw 3vw;
+	min-height: 200px;
+	max-height: 340px;
+	text-align: center;
+}
+
+.site-title {
+  z-index: 10;
+  margin: 0 0 0.15em;
+  padding: 0;
+}
+
+.site-logo {
+  height: 150px;
+}
+
+.site-header-content p {
+	z-index: 10;
+	max-width: 600px;
+	margin: 0 auto;
+	line-height: 1.2em;
+	opacity: .8;
+}
+
+@media (max-width: 600px) {
+  .site-header-content p {
+    max-width: 80vmin;
+    font-size: 1.8rem;
+  }
+}
+
+/* 5. Site Navigation
+/* ---------------------------------------------------------- */
+
+.nav {
+	display: flex;
+	margin: 0 0 0 -12px;
+	padding: 0;
+	list-style: none;
+}
+
+.nav li {
+    display: block;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+.nav li a {
+    display: block;
+    margin: 0;
+    padding: 10px 12px;
+    color: white;
+    opacity: 0.8;
+}
+
+.nav li a:hover {
+    text-decoration: none;
+    opacity: 1;
+}
+
+.site-nav {
+	position: relative;
+	z-index: 300;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	overflow-y: hidden;
+	height: 40px;
+}
+
+.site-nav-left {
+  flex-grow:1;
+  flex-basis: 0;
+  padding-left: 10px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+	letter-spacing: 0.4px;
+	white-space: nowrap;
+	-ms-overflow-scrolling: touch;
+}
+
+.site-nav-logo {
+  flex-grow:1;
+  flex-basis: 0;
+  margin-left: -10px;
+}
+
+.site-nav-logo a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	color: white;
+	font-size: 1.7rem;
+	line-height: 1em;
+	font-weight: bold;
+	letter-spacing: -0.5px;
+}
+
+.site-nav-logo a:hover {
+  text-decoration: none;
+}
+
+.site-nav-logo img {
+    display: block;
+    width: auto;
+    height: 40px;
+}
+
+.site-nav-right {
+  flex-grow:1;
+  flex-basis: 0;
+	height: 40px;
+}
+
+.site-nav-right ul {
+  margin: 0;
+  justify-content: right;
+}
+
+.inline-svg {
+	display: inline-block;
+	height: 2rem;
+	width: 2rem;
+	bottom: .5rem;
+	position: relative;
+}
+
+@media (max-width: 700px) {
+    .site-header {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .site-nav-left {
+        margin-right: 0;
+        padding-left: 4vw;
+    }
+    .site-nav-right {
+        display: none;
+    }
+}
+
+/* 6. Post Feed
+/* ---------------------------------------------------------- */
+
+.post-feed {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -20px;
+    padding: 40px 0 0 0;
+}
+
+.post-card {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 0 20px 40px;
+    min-height: 400px;
+    background: var(--bg-post) center center;
+    background-size: cover;
+    border-radius: 5px;
+    box-shadow: rgba(39,44,49,0.06) 8px 14px 38px, rgba(39, 44, 49, 0.03) 1px 3px 8px;
+    transition: all 0.5s ease;
+}
+
+.post-card:hover {
+    box-shadow: rgba(39,44,49,0.07) 8px 28px 50px, rgba(39, 44, 49, 0.04) 1px 6px 12px;
+    transition: all 0.4s ease;
+    transform: translate3D(0, -1px, 0) scale(1.02);
+}
+
+.post-card-image-link {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.post-card-image {
+    width: auto;
+    height: 200px;
+    background: var(--img-bg-color) no-repeat center center;
+    background-size: cover;
+}
+
+
+.post-card-content-link {
+    position: relative;
+    flex-grow: 1;
+    display: block;
+    padding: 25px 25px 0;
+}
+
+.post-card-content-link:hover {
+    text-decoration: none;
+}
+
+.post-card-tags {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.post-card-tags li {
+  display: inline;
+}
+
+.post-card-title {
+    margin-top: 0;
+}
+
+.post-card-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.post-card-meta {
+  padding: 25px 25px 25px;
+  font-size: .75em;
+  color: darkgray;
+  background: var(--bg-post);
+}
+
+.post-card-meta a {
+  color: darkgray;
+}
+
+.post-card-meta .bull,
+.post-full-meta .bull {
+	display: inline-block;
+	margin: 0 4px;
+	opacity: .6;
+}
+
+/* Special Styling for home page grid (below):
+
+The first (most recent) post in the list is styled to be bigger than the others and take over the full width
+of the grid to give it more emphasis.
+Wrapped in a media query to make sure this only happens on large viewports / desktop-ish devices.
+
+ */
+
+@media (min-width: 795px) {
+    .home-template .post-feed .post-card:nth-child(6n+1):not(.no-image) {
+        flex: 1 1 100%;
+        flex-direction: row;
+    }
+
+    .home-template .post-feed .post-card:nth-child(6n+1):not(.no-image) .post-card-image-link {
+        position: relative;
+        flex: 1 1 auto;
+        border-radius: 5px 0 0 5px;
+    }
+
+    .home-template .post-feed .post-card:nth-child(6n+1):not(.no-image) .post-card-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .home-template .post-feed .post-card:nth-child(6n+1):not(.no-image) .post-card-content {
+        flex: 0 1 357px;
+    }
+
+    .home-template .post-feed .post-card:nth-child(6n+1):not(.no-image) h2 {
+        font-size: 2.6rem;
+    }
+
+    .home-template .post-feed .post-card:nth-child(6n+1):not(.no-image) p {
+        font-size: 1.8rem;
+        line-height: 1.55em;
+    }
+
+    .home-template .post-feed .post-card:nth-child(6n+1):not(.no-image) .post-card-content-link {
+        padding: 30px 40px 0;
+    }
+
+    .home-template .post-feed .post-card:nth-child(6n+1):not(.no-image) .post-card-meta {
+        padding: 0 40px 30px;
+    }
+}
+
+.home-template .site-header:after {
+    display: none;
+}
+
+/* Adjust some margins for smaller screens */
+@media (max-width: 650px) {
+    .post-feed {
+        padding-top: 5vw;
+    }
+    .post-card {
+        margin: 0 20px 5vw;
+    }
+}
+
+/* 7. Single Post
+/* ---------------------------------------------------------- */
+
+.post-template .site-main,
+.page-template .site-main {
+    padding-bottom: 4vw;
+    background: var(--bg-color);
+}
+
+.post-full {
+    position: relative;
+    z-index: 50;
+}
+/* ^ Required to make .post-full-content:before/after z-index stacking work */
+
+.post-full-header {
+    margin: 0 auto;
+    padding: 4vw 3vw 3vw;
+    max-width: 1040px;
+    text-align: center;
+}
+
+@media (max-width: 500px) {
+    .post-full-header {
+        padding: 14vw 3vw 10vw;
+    }
+}
+
+.post-full-meta {
+    padding-top: 25px;
+    color: var(--font-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.post-full-title {
+    margin: 0;
+}
+
+.post-full-image {
+    margin: 0 -5vw -165px;
+    height: 700px;
+    background: var(--img-bg-color) center center;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+@media (max-width: 1170px) {
+    .post-full-image {
+        margin: 0 -4vw -100px;
+        height: 600px;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 800px) {
+    .post-full-image {
+        height: 400px;
+    }
+}
+
+.post-full-content {
+    position: relative;
+    margin: 0 auto;
+    padding: 70px 100px 8vmin;
+    min-height: 230px;
+    font-family: Georgia, serif;
+    font-size: 2.2rem;
+    line-height: 1.6em;
+    background: var(--bg-post);
+}
+
+@media (max-width: 1170px) {
+    .post-full-content {
+        padding: 5vw 7vw 0;
+    }
+}
+@media (max-width: 800px) {
+    .post-full-content {
+        font-size: 1.9rem;
+    }
+}
+
+.post-full-content:before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: -5px;
+    z-index: -1;
+    display: block;
+    width: 20px;
+    height: 200px;
+    background: rgba(39,44,49,0.15);
+    filter: blur(5px);
+    transform: rotate(-5deg);
+}
+
+.post-full-content:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: -5px;
+    z-index: -1;
+    display: block;
+    width: 20px;
+    height: 200px;
+    background: rgba(39,44,49,0.15);
+    filter: blur(5px);
+    transform: rotate(5deg);
+}
+
+.no-image .post-full-content:before,
+.no-image .post-full-content:after {
+    display: none;
+}
+
+.post-full-content h1,
+.post-full-content h2,
+.post-full-content h3,
+.post-full-content h4,
+.post-full-content h5,
+.post-full-content h6,
+.post-full-content p,
+.post-full-content ul,
+.post-full-content ol,
+.post-full-content dl,
+.post-full-content pre,
+.post-full-content blockquote,
+.post-full-comments,
+.footnotes {
+    min-width: 100%;
+}
+
+.post-full-content li {
+    word-break: break-word;
+}
+
+.post-full-content li p {
+    margin: 0;
+}
+
+.post-full-content a {
+    color: var(--font-color);
+    box-shadow: var(--font-color) 0 -1px 0 inset;
+}
+
+.post-full-content a:hover {
+    color: var(--link-color);
+    box-shadow: var(--link-color) 0 -1px 0 inset;
+    text-decoration: none;
+}
+
+.post-full-content small {
+    display: inline-block;
+    line-height: 1.6em;
+}
+
+.post-full-content li:first-child {
+    margin-top: 0;
+}
+
+.post-full-content img,
+.post-full-content video {
+    display: block;
+    margin: 1.5em auto;
+    max-width: 1040px;
+    height: auto;
+}
+@media (max-width: 1040px) {
+    .post-full-content img,
+    .post-full-content video {
+        width: 100%;
+    }
+}
+
+
+/* Full bleed images (#full)
+Super neat trick courtesy of @JoelDrapper
+
+Usage (In Ghost edtior):
+
+![img](/some/image.jpg#full)
+
+*/
+.post-full-content img[src$="#full"] {
+    max-width: none;
+    width: 100vw;
+}
+
+
+/* Image captions
+
+Usage (In Ghost editor):
+
+![img](/some/image.jpg)
+<small>Your image caption</small>
+
+*/
+.post-full-content img + br + small {
+    display: block;
+    margin-top: -3em;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+
+/* Override third party iframe styles */
+.post-full-content iframe {
+    margin: 0 auto !important;
+}
+
+.post-full-content blockquote {
+    margin: 0 0 1.5em;
+    padding: 0 1.5em;
+    border-left: #3eb0ef 3px solid;
+}
+
+.post-full-content p {
+  margin: 0 0 1.5em;
+}
+
+.post-full-content blockquote p {
+    margin: 0 0 1em 0;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-style: italic;
+}
+
+.post-full-content blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.post-full-content code {
+    padding: 0 5px 2px;
+    font-size: 0.8em;
+    line-height: 1em;
+    font-weight: 400!important;
+    background: var(--pre-bg-color);
+    border-radius: 3px;
+}
+
+.post-full-content pre {
+    overflow-x: auto;
+    margin: 1.5em 0 3em;
+    padding: 20px;
+    max-width: 100%;
+    color: var(--pre-color);
+    font-size: 1.4rem;
+    line-height: 1.5em;
+    background: var(--pre-bg-color);
+    border-radius: 5px;
+}
+
+.post-full-content pre code {
+    padding: 0;
+    font-size: inherit;
+    line-height: inherit;
+    background: transparent;
+}
+
+.post-full-content pre code * {
+    color: inherit;
+}
+
+.post-full-content .fluid-width-video-wrapper {
+    margin: 1.5em 0 3em;
+}
+
+.post-full-content hr {
+    margin: 4vw 0;
+}
+
+.post-full-content hr:after {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    display: block;
+    margin-left: -10px;
+    width: 1px;
+    height: 30px;
+    box-shadow: white 0 0 0 5px;
+    transform: rotate(45deg);
+}
+
+.post-full-content h1,
+.post-full-content h2,
+.post-full-content h3,
+.post-full-content h4,
+.post-full-content h5,
+.post-full-content h6 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.post-full-content h1 {
+    margin: 0.5em 0 0.2em 0;
+    font-size: 4.6rem;
+    font-weight: 700;
+}
+@media (max-width: 500px) {
+    .post-full-content h1 {
+        font-size: 2.8rem;
+    }
+}
+
+.post-full-content h2 {
+    margin: 0.5em 0 0.2em 0;
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+@media (max-width: 500px) {
+    .post-full-content h2 {
+        font-size: 2.6rem;
+    }
+}
+
+.post-full-content h3 {
+    margin: 0.5em 0 0.2em 0;
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+@media (max-width: 500px) {
+    .post-full-content h3 {
+        font-size: 2.2rem;
+    }
+}
+
+.post-full-content h4 {
+    margin: 0.5em 0 0.2em 0;
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+@media (max-width: 500px) {
+    .post-full-content h4 {
+        font-size: 2.2rem;
+    }
+}
+
+.post-full-content h5 {
+    margin: 0.5em 0 0.2em 0;
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+
+@media (max-width: 500px) {
+    .post-full-content h5 {
+        font-size: 2.2rem;
+    }
+}
+
+.post-full-content h6 {
+    margin: 0.5em 0 0.2em 0;
+    font-size: 2.3rem;
+    font-weight: 700;
+}
+@media (max-width: 500px) {
+    .post-full-content h6 {
+        font-size: 2rem;
+    }
+}
+
+.footnotes-sep {
+    margin-bottom: 30px;
+}
+
+.footnotes {
+    font-size: 1.5rem;
+}
+
+.footnotes p {
+    margin: 0;
+}
+
+.footnote-backref {
+    color: var(--link-color) !important;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none !important;
+    box-shadow: none !important;
+}
+
+/* Some grouped styles for smaller viewports */
+@media (max-width: 500px) {
+    .post-full-title {
+        font-size: 2.9rem;
+    }
+    .post-full-image {
+        margin-bottom: 4vw;
+        height: 350px;
+    }
+    .post-full-content {
+        padding: 0;
+    }
+    .post-full-content:before,
+    .post-full-content:after {
+        display: none;
+    }
+}
+
+/* Tables */
+.post-full-content table {
+    display: inline-block;
+    overflow-x: auto;
+    margin: 0.5em 0 2.5em;
+    max-width: 100%;
+    width: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 1.6rem;
+    white-space: nowrap;
+    vertical-align: top;
+}
+
+.post-full-content table {
+    -webkit-overflow-scrolling: touch;
+    background: radial-gradient(ellipse at left, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 0 center, radial-gradient(ellipse at right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%) 100% center;
+    background-attachment: scroll, scroll;
+    background-size: 10px 100%, 10px 100%;
+    background-repeat: no-repeat;
+}
+
+.post-full-content table td:first-child {
+    background-image: linear-gradient(to right,  var(--tabel-bg-shadow) 50%, rgba(var(--tabel-bg-shadow-rgb),0) 100%);
+    background-size: 20px 100%;
+    background-repeat: no-repeat;
+}
+
+.post-full-content table td:last-child {
+    background-image: linear-gradient(to left, var(--tabel-bg-shadow) 50%, rgba(var(--tabel-bg-shadow-rgb),0) 100%);
+    background-position: 100% 0;
+    background-size: 20px 100%;
+    background-repeat: no-repeat;
+}
+
+.post-full-content table th {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-align: left;
+    text-transform: uppercase;
+    background-color: var(--thead-bg-color);
+}
+
+.post-full-content table th,
+.post-full-content table td {
+    padding: 6px 12px;
+    border: var(--table-border-color) 1px solid;
+}
+
+.post-full-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 3vw 0 6vw 0;
+    max-width: 840px;
+}
+
+/* 8. Site Footer
+/* ---------------------------------------------------------- */
+
+.site-footer {
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 60px;
+    color: rgba(255,255,255,0.7);
+    background: #252525;
+}
+
+.site-footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 1.3rem;
+}
+
+.site-footer-content a {
+  color: var(--link-color);
+}
+
+.site-footer-content a:hover {
+  color: var(--link-state-color);
+  text-decoration: none;
+}
+
+.site-footer-nav {
+    display: flex;
+}
+
+.site-footer-nav a {
+  color: var(--link-color);
+  position: relative;
+  margin-left: 20px;
+}
+
+.site-footer-nav a:before {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: -11px;
+    display: block;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 100%;
+}
+
+.site-footer-nav a:first-of-type:before {
+    display: none;
+}
+
+.colorscheme-toggle {
+  color: darkgray !important;
+  cursor: pointer;
+}
+
+.colorscheme-toggle:hover {
+  color: var(--link-color) !important;
+}
+
+@media (max-width: 650px) {
+    .site-footer-content {
+        flex-direction: column;
+    }
+    .site-footer-nav a:first-child {
+        margin-left: 0;
+    }
+}

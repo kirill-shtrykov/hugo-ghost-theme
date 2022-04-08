@@ -1,0 +1,12 @@
+<footer class="post-card-meta">
+  {{ if isset .Params "date" }}
+  <div class="post-card-date">{{ .Params.date }}</div>
+  {{ end }}
+  {{ if .Params.tags }}
+  <ul class="post-card-tags">
+    {{ range .Params.tags }}
+    <li><a href="{{ "tags/" | absLangURL }}{{ . | urlize }}">#{{ . }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</footer>

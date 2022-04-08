@@ -1,0 +1,25 @@
+<ul class="nav">
+  {{ with .Site.Params.social.email }}
+  <li><a href="mailto:{{.}}" aria-label="E-Mail" target="_blank">
+    {{ partial "font-awesome.html" (dict "iconName" "email" "custom" false) }}</a></li>
+  {{ end }}
+  {{ with .Site.Params.social.telegram }}
+  <li><a href="https://t.me/{{.}}" aria-label="Telegram" target="_blank">
+    {{ partial "font-awesome.html" (dict "iconName" "telegram" "custom" false) }}</a></li>
+  {{ end }}
+  {{ with .Site.Params.social.gitlab }}
+  <li><a href="https://gitlab.com/{{.}}" aria-label="Gitlab" target="_blank">
+    {{ partial "font-awesome.html" (dict "iconName" "gitlab" "custom" false) }}</a></li>
+  {{ end }}
+  {{ with .Site.Params.social.github }}
+  <li><a href="https://github.com/{{.}}" aria-label="Github" target="_blank">
+    {{ partial "font-awesome.html" (dict "iconName" "github" "custom" false) }}</a></li>
+  {{ end }}
+  {{ with .Site.Home.OutputFormats.Get "rss" -}}
+  <li>
+    <a {{ printf "href=%q" .Permalink | safeHTMLAttr }} title="RSS" rel="me">
+    {{ partial "font-awesome.html" (dict "iconName" "rss" "custom" false) }}
+    </a>
+  </li>
+  {{ end -}}
+</ul>

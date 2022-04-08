@@ -1,0 +1,21 @@
+<header class="site-header outer">
+  <div class="inner">
+    <div class="site-header-content">
+      <h1 class="site-title">
+        {{ if isset .Site.Params "logo" }}
+        <img class="site-logo" src="{{.Site.Params.logo | absURL}}" alt="{{.Site.Title}}" />
+        {{ else }}
+        {{.Site.Title}}
+        {{ end }}
+      </h1>
+      <p>
+        {{ if .IsHome }}
+        {{ markdownify .Site.Params.Description | default "Hugo Ghost Theme" }}
+        {{ else }}
+        {{ i18n .Title | default .Title }}
+        {{ end }}
+      </p>
+    </div>
+    {{ partial "site-nav" . }}
+  </div>
+</header>

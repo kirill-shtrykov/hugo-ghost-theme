@@ -1,0 +1,32 @@
+name = "Hugo Ghost Theme"
+license = "MIT"
+licenselink = "https://github.com/kirill-shtrykov/hugo-ghost-theme/blob/master/LICENSE"
+description = "Hugo theme based on Casper, default Ghost theme"
+homepage = "https://github.com/kirill-shtrykov/hugo-ghost-theme"
+tags = [
+  "blog",
+  "clean",
+  "dark",
+  "fast",
+  "google-analytics",
+  "light",
+  "minimal",
+  "mobile",
+  "multilingual",
+  "personal",
+  "responsive",
+  "simple",
+]
+
+features = ["blog"]
+
+min_version = "0.41.0"
+
+[author]
+    name = "Kirill Shtrykov"
+    homepage = "kirill@shtrykov.com"
+
+[original]
+  name = "Ghost"
+  homepage = "https://ghost.org"
+  repo = "https://github.com/TryGhost/Casper"

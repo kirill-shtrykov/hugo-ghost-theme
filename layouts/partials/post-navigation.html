@@ -1,0 +1,13 @@
+<aside class="read-next outer">
+  <div class="inner">
+    <div class="post-feed">
+      {{ with .PrevInSection}}
+      {{- partial "post-card" . -}}
+      {{end}}
+
+      {{ with .NextInSection}}
+      {{- partial "post-card" . -}}
+      {{end}}
+    </div>
+  </div>
+</aside>

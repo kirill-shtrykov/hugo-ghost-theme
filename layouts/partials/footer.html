@@ -1,0 +1,17 @@
+<footer class="site-footer outer">
+  <div class="site-footer-content inner">
+    <div class="copyright">
+      <p>&copy; {{ if isset .Site.Params "author"}}{{ .Site.Params.author }}, {{end}}{{ now.Year }}<br>
+        Powered by <a target="_blank" rel="noopener noreferrer" href="https://gohugo.io/">Hugo</a>, theme
+        <a target="_blank" rel="noopener noreferrer" href="https://github.com/kirill-shtrykov/hugo-ghost-theme">
+          Ghost
+        </a>.
+      </p>
+    </div>
+    <div class="site-footer-right">
+      <a id="dark-mode-toggle" class="colorscheme-toggle">
+        {{ partial "font-awesome.html" (dict "iconName" "adjust" "custom" false) }}
+      </a>
+    </div>
+  </div>
+</footer>

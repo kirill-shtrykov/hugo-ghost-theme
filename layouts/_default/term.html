@@ -1,0 +1,23 @@
+{{ define "body-tag" }}<body class="post-template">{{ end }}
+{{ define "header" }}
+<header class="site-header outer">
+  <div class="inner">
+    {{ partial "site-nav" . }}
+  </div>
+</header>
+{{ end }}
+{{ define "main" }}
+<main id="site-main" class="site-main outer">
+  <div class="inner">
+    <header class="post-full-header">
+      <h1 class="post-full-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">
+        {{ i18n .Title | default .Title }}
+      </h1>
+      {{ .Content }}
+    </header>
+    <div class="post-feed">
+      {{ range .Pages.ByLastmod }}{{ partial "post-card" . }}{{ end }}
+    </div>
+  </div>
+</main>
+{{ end }}

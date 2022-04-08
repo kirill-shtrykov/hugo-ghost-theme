@@ -1,0 +1,32 @@
+{{ define "body-tag" }}<body class="post-template">{{ end }}
+{{ define "header" }}
+<header class="site-header outer">
+  <div class="inner">
+    {{ partial "site-nav" . }}
+  </div>
+</header>
+{{ end }}
+{{ define "main" }}
+<main id="site-main" class="site-main outer">
+  <div class="inner">
+    <article class="post-full no-image">
+      <header class="post-full-header">
+        <h1 class="post-full-title{{ if .Params.favorite }} favorite{{end}}{{ if .Params.draft }} draft{{end}}">
+          {{ i18n .Title | default .Title }}
+        </h1>
+        {{ .Content }}
+      </header>
+      <section class="post-full-content">
+        <ul>
+          {{- $term := .Data.Singular }}
+          {{- range .Data.Terms.ByCount }}
+          <li class="post-title">
+            <h2><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a> ({{ .Count }})</h2>
+          </li>
+          {{ end }}
+        </ul>
+      </section>
+    </article>
+  </div>
+</main>
+{{ end }}
