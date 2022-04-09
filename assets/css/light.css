@@ -4,13 +4,14 @@
   --bg-color: #f4f8fb;
   --bg-post: white;
 
-  --header-gradient-color-one: #ff0000; /* #e85f0e */
-  --header-gradient-color-two: #e85f0e; /* #ff2c80; */
-  --header-gradient-color-three: #c55de7; /* #c55de7; */
+  --header-gradient-color-one: #ff0000;
+  --header-gradient-color-two: #e85f0e;
+  --header-gradient-color-three: #c55de7;
   --header-gradient-color-four: #008eff;
 
-  --link-color:#1d60a3;
-  --link-state-color:#a31d1d;
+  --link-color: #1d60a3;
+  --link-color-rgb: 29, 96, 163;
+  --link-state-color: #a31d1d;
 
   --pre-color: #333;
   --pre-bg-color: #f1f1f1;

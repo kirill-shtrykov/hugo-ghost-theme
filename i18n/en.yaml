@@ -6,3 +6,12 @@ Tags:
 
 min:
   other: min
+
+hint:
+  other: Hint!
+
+warn:
+  other: Warning!
+
+danger:
+  other: Danger!

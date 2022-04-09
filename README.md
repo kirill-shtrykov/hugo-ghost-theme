@@ -56,8 +56,11 @@ menus:
       url: /tags/
 
 ```
-## Contributing
 
+## Features
+- `warn`/`hint`/`danger` codeblocks
+
+## Contributing
 If you find a bug or have an idea for a feature, feel free to write an 
 [issue](https://github.com/kirill-shtrykov/hugo-ghost-theme/issues) or make a PR.
 

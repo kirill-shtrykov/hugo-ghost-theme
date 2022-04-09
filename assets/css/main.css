@@ -739,6 +739,58 @@ Usage (In Ghost editor):
     background: transparent;
 }
 
+.post-full-content fieldset {
+	overflow-x: auto;
+	margin: 1.5em 0 3em;
+	padding: 10px 0 20px 20px;
+	max-width: 100%;
+	color: var(--pre-color);
+	font-size: 1.5rem;
+	line-height: 1.5em;
+	background: var(--pre-bg-color);
+	border-radius: 5px;
+}
+
+.post-full-content fieldset legend {
+  padding: 0 0.5em;
+}
+
+.post-full-content fieldset pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.post-full-content fieldset.hint {
+  color: var(--link-color);
+  border: var(--link-color) 1px solid;
+  background: rgba(var(--link-color-rgb), 0.1);
+}
+
+.post-full-content fieldset.hint pre {
+  color: var(--link-color);
+}
+
+.post-full-content fieldset.danger {
+  color: #ff0000;
+  border: #ff0000 1px solid;
+  background: #ff0000, 0.3);
+}
+
+.post-full-content fieldset.danger pre {
+  color: #ff0000;
+}
+
+.post-full-content fieldset.warn {
+  color: orange;
+  border: orange 1px solid;
+  background: orange, 0.3);
+}
+
+.post-full-content fieldset.warn pre {
+  color: orange;
+}
+
 .post-full-content pre code * {
     color: inherit;
 }

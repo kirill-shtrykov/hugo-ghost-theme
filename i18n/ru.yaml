@@ -6,3 +6,12 @@ Tags:
 
 min:
   other: мин
+
+hint:
+  other: Совет
+
+warn:
+  other: Внимание!
+
+danger:
+  other: Опасно!
